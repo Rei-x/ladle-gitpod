@@ -1,6 +1,8 @@
 tasks:
   - init: pnpm install
-    command: pnpm ladle
+    command: | 
+      export HMR_HOST=`gp url 24678`
+      pnpm ladle
 ports:
   - port: 61000
     onOpen: open-browser
