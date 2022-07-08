@@ -1,0 +1,6 @@
+tasks:
+  - init: pnpm install
+    command: pnpm ladle
+ports:
+  - port: 61000
+    onOpen: open-browser
