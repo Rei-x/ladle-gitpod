@@ -2,7 +2,10 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: pnpm install
+  - name: Install dependencies and fix hmr host in vite (make host undefined)
+    init: |
+      pnpm install
+      grep -rl 'hmr.host' ./node_modules/.pnpm/vite@*/node_modules/vite/dist/node/chunks | xargs sed -i 's/hmr && hmr.host/false/g'
     command: | 
       export HMR_HOST=`gp url 24678`
       pnpm ladle
